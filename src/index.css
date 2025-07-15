@@ -1,9 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
 /* custom */
+
 @theme {
   --breakpoint-xs: 480px;
+  --font-sans: "Mona Sans", sans-serif;
+  --font-serif: "DM Serif Text", serif;
 }
 
 @layer base {
@@ -13,19 +18,37 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     font-synthesis: none;
-    /* fontを指定する際はこれを指定する */
-    /* font-size-ajust: ex-height 0.48; */
+    font-optical-sizing: auto;
+  }
+
+  /* topから動くとheaderの背景を変える */
+  html {
+    container-type: scroll-state;
+  }
+  .header {
+    @apply md:fixed top-0 left-0 z-50 w-full transition-all duration-500;
+
+    @container scroll-state(scrollable: top) {
+      @apply bg-background/10 backdrop-blur-sm;
+    }
+  }
+
+  .introduce__image {
+    mask-image: url("/mask.webp");
+    mask-size: 40%;
+    mask-repeat: no-repeat;
+    mask-position: center;
   }
 }
 
 @layer components {
-  .container {
-    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  .wrapper {
+    @apply mx-auto w-[min(94%,1280px)];
   }
 }
 
 @utility text-gradient {
-  @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;
+  @apply bg-linear-to-b from-white to-white/50 bg-clip-text text-transparent;
 }
 
 /* shadcn/ui */
@@ -48,7 +71,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
+  --color-accent: var(--color-yellow-400);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-border: var(--border);

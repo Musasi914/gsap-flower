@@ -76,6 +76,9 @@ react-gsap-practice/
 - GSAP のアニメーションは `@gsap/react` パッケージを使用
 - Tailwind CSS v4 を使用したモダンなスタイリング
 - TypeScript による型安全性の確保
+- 初マスクアニメーションを試してみた
+- ラストは three.js で plane をバラっぽくしてみた マウスで動く
+- メモ化こうできるのか　 const MemoizedHero = memo(Hero);
 
 ## ライセンス
 
